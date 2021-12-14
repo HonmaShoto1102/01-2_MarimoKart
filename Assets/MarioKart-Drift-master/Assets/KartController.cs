@@ -13,6 +13,8 @@ public class KartController : MonoBehaviour
     public Transform kartModel;
     public Transform kartNormal;
     public Rigidbody sphere;
+    public CinemachineVirtualCamera vcamera;
+
 
     public List<ParticleSystem> primaryParticles = new List<ParticleSystem>();
     public List<ParticleSystem> secondaryParticles = new List<ParticleSystem>();
@@ -69,17 +71,24 @@ public class KartController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    float time = Time.timeScale == 1 ? .2f : 1;
+        //    Time.timeScale = time;
+        //}
+
+        //CameraChange
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            float time = Time.timeScale == 1 ? .2f : 1;
-            Time.timeScale = time;
+
         }
 
         //Follow Collider
         transform.position = sphere.transform.position - new Vector3(0, 0.4f, 0);
 
         //Accelerate
-        if (Input.GetButton("Fire1"))
+        //if (Input.GetButton("Fire1"))
+        if (Input.GetMouseButton(0))
             speed = acceleration;
 
         //Steer
@@ -251,7 +260,7 @@ public class KartController : MonoBehaviour
 
     void PlayFlashParticle(Color c)
     {
-        GameObject.Find("CM vcam1").GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+        GameObject.Find("CM vcam_front").GetComponent<CinemachineImpulseSource>().GenerateImpulse();
 
         foreach (ParticleSystem p in secondaryParticles)
         {
