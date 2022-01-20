@@ -81,14 +81,18 @@ public class KartController : MonoBehaviour
         //CameraChange
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            //Follow Collider
-            transform.position = sphere.transform.position - new Vector3(0, 0.4f, 0);
         }
+
+        //Follow Collider
+        transform.position = sphere.transform.position - new Vector3(0, 0.4f, 0);
+
 
         //Accelerate
         //if (Input.GetButton("Fire1"))
-        if (Input.GetMouseButton(0))
+        if (Input.GetKey(KeyCode.W))
             speed = acceleration;
+        if (Input.GetKey(KeyCode.S))
+            speed = -acceleration * 0.5f;
 
         //Steer
         if (Input.GetAxis("Horizontal") != 0)
