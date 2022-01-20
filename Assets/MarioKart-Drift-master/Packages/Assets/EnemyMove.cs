@@ -29,7 +29,7 @@ public class EnemyMove : MonoBehaviour
     void OnTriggerEnter(Collider collider)
     {
         Debug.Log("atta");
-        if (collider.CompareTag("Player"))
+        if (collider.CompareTag("Player")==true)
         {
             Debug.Log("atta2");
             i++;
