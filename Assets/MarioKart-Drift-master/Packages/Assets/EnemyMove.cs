@@ -20,7 +20,7 @@ public class EnemyMove : MonoBehaviour
     {
         if (agent.pathStatus != NavMeshPathStatus.PathInvalid)
             agent.SetDestination(checkPoint[i].transform.position);
-        Debug.Log(i);
+        Debug.Log("CheckPoint:"+i);
     }
 
 
@@ -28,10 +28,9 @@ public class EnemyMove : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("atta");
-        if (collider.CompareTag("Player")==true)
+     
+        if (collider.CompareTag("checkPoint")==true)
         {
-            Debug.Log("atta2");
             i++;
         }
     }
