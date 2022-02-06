@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MarioKart-Drift-master/Packages/Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/RaceScene.unity
     guid: 2c3b394d7cdfe8745ba9cc45de67807d
   m_configObjects: {}
