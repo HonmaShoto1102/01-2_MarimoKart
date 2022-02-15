@@ -13,16 +13,25 @@ public class CustomKart : MonoBehaviour
 	//　ボディの親のボーン
 	[SerializeField]
 	private Transform parentBody;
+	//　グライダーの親のボーン
+	[SerializeField]
+	private Transform parentKite;
+
 
 	//　キャラクターゲームオブジェクト配列
 	[SerializeField]
-	private List<GameObject> Charactors;
+	private List<GameObject> CharactorsList;
 	//　タイヤゲームオブジェクト配列
 	[SerializeField]
-	private List<GameObject> Tires;
+	private List<GameObject> TiresList;
 	//　ボディゲームオブジェクト配列
 	[SerializeField]
-	private List<GameObject> Bodyies;
+	private List<GameObject> BodyiesList;
+	//　グライダーゲームオブジェクト配列
+	[SerializeField]
+	private List<GameObject> KitesList;
+
+
 
 	//　現在選択中のキャラクター
 	private GameObject charactor;
@@ -30,6 +39,8 @@ public class CustomKart : MonoBehaviour
 	private GameObject tire;
 	//　現在選択中のボディ
 	private GameObject body;
+	//　現在選択中のグライダー
+	private GameObject kite;
 
 	//　現在のキャラクター番号
 	private int charactorCount;
@@ -37,6 +48,8 @@ public class CustomKart : MonoBehaviour
 	private int tireCount;
 	//　現在のボディ番号
 	private int bodyCount;
+	//　現在のグライダー番号
+	private int kiteCount;
 
 	[SerializeField]
 	private List<CapsuleCollider> capsuleColliders;
@@ -49,7 +62,10 @@ public class CustomKart : MonoBehaviour
 
 		//　最初は何も選択しない
 		ChangeCharactor();
-		ChangeItem();
+		ChangeBody();
+		ChangeTire();
+		ChangeKite();
+
 	}
 
 	void Update()
@@ -58,12 +74,24 @@ public class CustomKart : MonoBehaviour
 		if (Input.GetKeyDown("1"))
 		{
 			ChangeCharactor();
-			//　2キーが押されたらすね用ガードを変更
 		}
 		else if (Input.GetKeyDown("2"))
 		{
-			ChangeItem();
+			ChangeBody();
 		}
+		else if (Input.GetKeyDown("3"))
+		{
+			ChangeTire();
+			//Debug.Log("tireカウント:" + tireCount);
+			//Debug.Log("tireゲームオブジェクト:" + tire);
+			//Debug.Log("tireリスト:" + TiresList);
+		}
+		else if (Input.GetKeyDown("4"))
+		{
+			ChangeKite();
+		}
+
+
 	}
 
 	//　キャラクター変更関数
@@ -76,11 +104,11 @@ public class CustomKart : MonoBehaviour
 		}
 
 		//　選択が設定されている時
-		if (charactorCount != 0)
+		if (charactorCount < CharactorsList.Count)
 		{
-			var equipInfo = Charactors[charactorCount].GetComponent<EquipInformation>();
+			var equipInfo = CharactorsList[charactorCount].GetComponent<EquipInformation>();
 			//　キャラクターの番号でプレハブをインスタンス化
-			charactor = Instantiate<GameObject>(Charactors[charactorCount]);
+			charactor = Instantiate<GameObject>(CharactorsList[charactorCount]);
 			//　parentArmorを親要素に設定
 			charactor.transform.SetParent(parentCharactor);
 			//　キャラクターの位置・回転・大きさの設定を行う
@@ -97,65 +125,104 @@ public class CustomKart : MonoBehaviour
 		}
 		charactorCount++;
 
-		if (charactorCount >= Charactors.Count)
+		if (charactorCount >= CharactorsList.Count)
 		{
 			charactorCount = 0;
 		}
 	}
 
 	//　アイテム変更関数
-	void ChangeItem()
+	void ChangeBody()
 	{
 
 		//　今選択しているアイテムを削除
-		if (tire != null)
-		{
-			Destroy(tire);
-		}
 		if (body != null)
 		{
 			Destroy(body);
 		}
 
 		//　選択が設定されている時
-		if (tireCount != 0)
+		if (bodyCount < BodyiesList.Count)
 		{
-			var equipInfo = Tires[tireCount].GetComponent<EquipInformation>();
-			//　タイヤの番号でプレハブをインスタンス化
-			tire = GameObject.Instantiate(Tires[tireCount]);
-			//　parentTireを親要素に設定
-			tire.transform.SetParent(parentTire);
-			//　アイテムの位置・回転・大きさの設定を行う
-			tire.transform.localPosition = equipInfo.GetPosition();
-			tire.transform.localRotation = Quaternion.Euler(equipInfo.GetRotation());
-			tire.transform.localScale = equipInfo.GetScale();
-			//　選択が設定されていない時はキャラクターインスタンスを削除
-		}
-
-		tireCount++;
-		if (tireCount >= Tires.Count)
-		{
-			tireCount = 0;
-		}
-		//　選択が設定されている時
-		if (bodyCount != 0)
-		{
-			var equipInfo = Bodyies[bodyCount].GetComponent<EquipInformation>();
+			var equipInfo = BodyiesList[bodyCount].GetComponent<EquipInformation>();
 			//　ボディの番号でプレハブをインスタンス化
-			body = GameObject.Instantiate(Bodyies[bodyCount]);
+			body = GameObject.Instantiate(BodyiesList[bodyCount]);
 			//　parentBodyを親要素に設定
 			body.transform.SetParent(parentBody);
 			//　アイテムの位置・回転・大きさの設定を行う
 			body.transform.localPosition = equipInfo.GetPosition();
 			body.transform.localRotation = Quaternion.Euler(equipInfo.GetRotation());
 			body.transform.localScale = equipInfo.GetScale();
-			//　選択が設定されていない時はキャラクターインスタンスを削除
+			//　選択が設定されていない時はボディインスタンスを削除
 		}
 
 		bodyCount++;
-		if (bodyCount >= Bodyies.Count)
+		if (bodyCount >= BodyiesList.Count)
 		{
 			bodyCount = 0;
 		}
 	}
+
+	void ChangeTire()
+	{
+		//　今選択しているアイテムを削除
+		if (tire != null)
+		{
+			Destroy(tire);
+		}
+
+		//　選択が設定されている時
+		if (tireCount < TiresList.Count)
+		{
+			var equipInfo = TiresList[tireCount].GetComponent<EquipInformation>();
+			//　タイヤの番号でプレハブをインスタンス化
+			tire = GameObject.Instantiate(TiresList[tireCount]);
+			//　parentTireを親要素に設定
+			tire.transform.SetParent(parentTire);
+			//　アイテムの位置・回転・大きさの設定を行う
+			tire.transform.localPosition = equipInfo.GetPosition();
+			tire.transform.localRotation = Quaternion.Euler(equipInfo.GetRotation());
+			tire.transform.localScale = equipInfo.GetScale();
+			//　選択が設定されていない時はタイヤインスタンスを削除
+		}
+
+		tireCount++;
+		if (tireCount >= TiresList.Count)
+		{
+			tireCount = 0;
+		}
+
+		
+	}
+	void ChangeKite()
+	{
+		//　今選択しているアイテムを削除
+		if (kite != null)
+		{
+			Destroy(kite);
+		}
+
+		//　選択が設定されている時
+		if (kiteCount < KitesList.Count)
+		{
+			var equipInfo = KitesList[kiteCount].GetComponent<EquipInformation>();
+			//　タイヤの番号でプレハブをインスタンス化
+			kite = GameObject.Instantiate(KitesList[kiteCount]);
+			//　parentTireを親要素に設定
+			kite.transform.SetParent(parentKite);
+			//　アイテムの位置・回転・大きさの設定を行う
+			kite.transform.localPosition = equipInfo.GetPosition();
+			kite.transform.localRotation = Quaternion.Euler(equipInfo.GetRotation());
+			kite.transform.localScale = equipInfo.GetScale();
+			//　選択が設定されていない時はグライダーインスタンスを削除
+		}
+
+		kiteCount++;
+		if (kiteCount >= KitesList.Count)
+		{
+			kiteCount = 0;
+		}
+	}
+
+
 }

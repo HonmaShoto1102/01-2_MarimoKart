@@ -35,7 +35,7 @@ public class EnemyMove : MonoBehaviour
         }
         else if(collider.gameObject.tag == "LastCheckPoint")
         {
-            i = 1;
+            i = 0;
         }
     }
 
