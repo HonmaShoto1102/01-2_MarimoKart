@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CheckPoint
   - LastCheckPoint
+  - GameManager
   layers:
   - Default
   - TransparentFX
