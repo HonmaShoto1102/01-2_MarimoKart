@@ -284,7 +284,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &457130617
 GameObject:
@@ -632,7 +632,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &833455032
 GameObject:
@@ -917,6 +917,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1063030003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1063030006}
+  - component: {fileID: 1063030005}
+  - component: {fileID: 1063030004}
+  m_Layer: 0
+  m_Name: MyGameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1063030004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063030003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ab2199314c2224fb569cccb75a1252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1063030005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063030003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c69ce9ec7bf0f4da77cccfc012c6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myGameManagerData: {fileID: 11400000, guid: 91991dcf5a441fa4fb1c12ec851c0ff8, type: 2}
+--- !u!4 &1063030006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063030003}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1399813748
 GameObject:
@@ -1438,12 +1495,24 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1738342170}
-        m_TargetAssemblyTypeName: ToRaceSceneManagement, Assembly-CSharp
-        m_MethodName: OnClick
-        m_Mode: 1
+        m_TargetAssemblyTypeName: SelectData.GameStartButton, Assembly-CSharp
+        m_MethodName: OnGameStart
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: RaceScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2028067641}
+        m_TargetAssemblyTypeName: SelectData.CustomKart, Assembly-CSharp
+        m_MethodName: OnCompleteCharacter
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2007405430}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1496,7 +1565,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1738342165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56c6b7aa686c9b44dbd2aae667aea302, type: 3}
+  m_Script: {fileID: 11500000, guid: f18e66e1b032f394b93258e269363042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1844238246
@@ -1626,7 +1695,7 @@ Transform:
   - {fileID: 358002129}
   - {fileID: 1578880766}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2028067639
 GameObject:
@@ -1639,7 +1708,7 @@ GameObject:
   - component: {fileID: 2028067640}
   - component: {fileID: 2028067641}
   m_Layer: 0
-  m_Name: CustomScript
+  m_Name: SceneObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1657,7 +1726,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2028067641
 MonoBehaviour:
@@ -1671,13 +1740,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e0500508c8e0f4b84fdc89dda2f572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentCharactor: {fileID: 2007405431}
+  parentCharacter: {fileID: 2007405431}
   parentTire: {fileID: 887711876}
   parentBody: {fileID: 887711876}
   parentKite: {fileID: 887711876}
-  CharactorsList:
-  - {fileID: 4656434722686361440, guid: 170dcca6e1f275149bc36fb87e8bd0a6, type: 3}
-  - {fileID: 7598762595312825505, guid: db5eb397e63b0934798c7b3af61ed100, type: 3}
   TiresList:
   - {fileID: 5456767640040677619, guid: eb7227087a878b5409bd644540d87e2a, type: 3}
   - {fileID: 4956866942355197816, guid: 744292bbcb715024298659f0e86b5646, type: 3}
@@ -1686,3 +1752,4 @@ MonoBehaviour:
   - {fileID: 9011705201822216320, guid: ef39c71b8f9962b419c024bd0bdcb67e, type: 3}
   KitesList: []
   capsuleColliders: []
+  prefabCharacter: {fileID: 1919012471076396, guid: 4e60231958933ba49a897e18d6eb71f5, type: 3}
