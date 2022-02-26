@@ -17,7 +17,7 @@ namespace SelectData
         public void OnGameStart(string stage)
         {
             //@MyGameManagerData‚É•Û‘¶‚³‚ê‚Ä‚¢‚éŸ‚ÌƒV[ƒ“‚ÉˆÚ“®‚·‚é
-            sceneTransition.NextSceneStart(stage);
+            sceneTransition.GameStart(stage);
         }
     }
 }

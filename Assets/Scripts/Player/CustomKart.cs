@@ -10,7 +10,7 @@ namespace SelectData
 
 		//　キャラクターの親のボーン
 		[SerializeField]
-		private Transform parentCharacter;
+		private Transform parentCharactor;
 		//　タイヤの親のボーン
 		[SerializeField]
 		private Transform parentTire;
@@ -22,7 +22,9 @@ namespace SelectData
 		private Transform parentKite;
 
 
-		
+		//　キャラクターゲームオブジェクト配列
+		[SerializeField]
+		private List<GameObject> CharactorsList;
 		//　タイヤゲームオブジェクト配列
 		[SerializeField]
 		private List<GameObject> TiresList;
@@ -36,7 +38,7 @@ namespace SelectData
 
 
 		//　現在選択中のキャラクター
-		private GameObject character;
+		private GameObject charactor;
 		//　現在選択中のタイヤ
 		private GameObject tire;
 		//　現在選択中のボディ
@@ -44,6 +46,8 @@ namespace SelectData
 		//　現在選択中のグライダー
 		private GameObject kite;
 
+		//　現在のキャラクター番号
+		private int charactorCount;
 		//　現在のタイヤ番号
 		private int tireCount;
 		//　現在のボディ番号
@@ -51,22 +55,19 @@ namespace SelectData
 		//　現在のグライダー番号
 		private int kiteCount;
 
-		//グライダー用
 		[SerializeField]
 		private List<CapsuleCollider> capsuleColliders;
-
-		//myGamemanagerからキャラクターを取得出来なかった場合(デバッグ用)
-		public GameObject prefabCharacter;
 
 		void Start()
 		{
 			myGameManagerData = FindObjectOfType<MyGameManager>().GetMyGameManagerData();
 
+			charactorCount = 0;
 			tireCount = 0;
 			bodyCount = 0;
 
 			//　最初は何も選択しない
-			ChangeCharacter();
+			ChangeCharactor();
 			ChangeBody();
 			ChangeTire();
 			ChangeKite();
@@ -75,19 +76,23 @@ namespace SelectData
 
 		void Update()
 		{
-			
+			//　1キーが押されたらキャラクターを変更
 			if (Input.GetKeyDown("1"))
+			{
+				ChangeCharactor();
+			}
+			else if (Input.GetKeyDown("2"))
 			{
 				ChangeBody();
 			}
-			else if (Input.GetKeyDown("2"))
+			else if (Input.GetKeyDown("3"))
 			{
 				ChangeTire();
 				//Debug.Log("tireカウント:" + tireCount);
 				//Debug.Log("tireゲームオブジェクト:" + tire);
 				//Debug.Log("tireリスト:" + TiresList);
 			}
-			else if (Input.GetKeyDown("3"))
+			else if (Input.GetKeyDown("4"))
 			{
 				ChangeKite();
 			}
@@ -95,49 +100,28 @@ namespace SelectData
 
 		}
 
-		//作成したPlayerの情報をmyGameManagerに入れる
-		public void OnCompleteCharacter(GameObject player)
-        {
-			//scene遷移しても破棄されないようにする
-			DontDestroyOnLoad(player);
-			myGameManagerData.SetCharacter(player);
-        }
-
 		//　キャラクター変更関数
-		void ChangeCharacter()
+		void ChangeCharactor()
 		{
+			//　今選択しているキャラクターを削除
+			if (charactor != null)
+			{
+				Destroy(charactor);
+			}
+
 			//　キャラクターが設定されている時
 			if (myGameManagerData.GetCharacter()!=null)
 			{
-				Debug.Log("myGameManagerData.GetCharacter().gameObject!=null");
-				
 				var equipInfo = myGameManagerData.GetCharacter().GetComponent<EquipInformation>();
 				//　キャラクターの番号でプレハブをインスタンス化
-				character = Instantiate<GameObject>(myGameManagerData.GetCharacter());
+				charactor = Instantiate<GameObject>(myGameManagerData.GetCharacter());
 				//　parentArmorを親要素に設定
-				character.transform.SetParent(parentCharacter);
+				charactor.transform.SetParent(parentCharactor);
 				//　キャラクターの位置・回転・大きさの設定を行う
-				character.transform.localPosition = equipInfo.GetPosition();
-				character.transform.localRotation = Quaternion.Euler(equipInfo.GetRotation());
-				character.transform.localScale = equipInfo.GetScale();
+				charactor.transform.localPosition = equipInfo.GetPosition();
+				charactor.transform.localRotation = Quaternion.Euler(equipInfo.GetRotation());
+				charactor.transform.localScale = equipInfo.GetScale();
 
-
-			}
-			else
-            {
-				Debug.Log("myGameManagerData.GetCharacter().gameObject==null");
-				//myGamemanagerからキャラクターを取得出来なかった場合
-				myGameManagerData.SetCharacter(prefabCharacter);
-
-				var equipInfo = myGameManagerData.GetCharacter().GetComponent<EquipInformation>();
-				//　キャラクターの番号でプレハブをインスタンス化
-				character = Instantiate<GameObject>(myGameManagerData.GetCharacter());
-				//　parentArmorを親要素に設定
-				character.transform.SetParent(parentCharacter);
-				//　キャラクターの位置・回転・大きさの設定を行う
-				character.transform.localPosition = equipInfo.GetPosition();
-				character.transform.localRotation = Quaternion.Euler(equipInfo.GetRotation());
-				character.transform.localScale = equipInfo.GetScale();
 			}
 			
 		}
