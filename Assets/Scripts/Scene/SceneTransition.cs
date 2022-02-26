@@ -14,15 +14,8 @@ namespace SelectData
             myGameManagerData = FindObjectOfType<MyGameManager>().GetMyGameManagerData();
         }
 
-        public void GoToOtherScene(string stage)
-        {
-            //　次のシーンデータをMyGameManagerに保存
-            myGameManagerData.SetNextSceneName(stage);
-            //　キャラクター選択シーンへ
-            SceneManager.LoadScene("SelectCharacter");
-        }
         
-        public void GameStart(string stage)
+        public void NextSceneStart(string stage)
         {
             //　次のシーンデータをMyGameManagerに保存
             myGameManagerData.SetNextSceneName(stage);
