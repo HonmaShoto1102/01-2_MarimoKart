@@ -14,6 +14,10 @@ namespace SelectData
         //　使用するキャラクタープレハブ
         [SerializeField]
         private GameObject character;
+        //　使用するカードデータ
+        [SerializeField]
+        private GameObject kart;
+
         //　データの初期化
         private void OnEnable()
         {
@@ -44,5 +48,7 @@ namespace SelectData
         {
             return character;
         }
+
+       
     }
 }

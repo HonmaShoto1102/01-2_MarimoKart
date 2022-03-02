@@ -636,8 +636,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kindOfItem: 0
-  pos: {x: 0, y: -0.93, z: -0.185}
-  rot: {x: 0, y: 0, z: 0}
+  pos: {x: 0.18, y: -0.1, z: 0.037}
+  rot: {x: 0, y: -90, z: 0}
   scale: {x: 0.7, y: 0.7, z: 0.7}
 --- !u!1 &7487410016656624449
 GameObject:

@@ -802,7 +802,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015923729}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f63f42fae266e2647bfe89d440b8ef6c, type: 3}
   m_Name: 
@@ -816,7 +816,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015923729}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b4c2f1167f610a4e9effe43589b8fa0, type: 3}
   m_Name: 
@@ -1740,7 +1740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e0500508c8e0f4b84fdc89dda2f572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentCharacter: {fileID: 2007405431}
+  parentCharacter: {fileID: 887711876}
   parentTire: {fileID: 887711876}
   parentBody: {fileID: 887711876}
   parentKite: {fileID: 887711876}
@@ -1750,6 +1750,7 @@ MonoBehaviour:
   - {fileID: 2675507209768749294, guid: 5bfea9fbc1ecce54ab2484174123ad6b, type: 3}
   BodyiesList:
   - {fileID: 9011705201822216320, guid: ef39c71b8f9962b419c024bd0bdcb67e, type: 3}
-  KitesList: []
+  KitesList:
+  - {fileID: 6034689535573249572, guid: c58b982fdfefe3a45a25ea474540dad9, type: 3}
   capsuleColliders: []
   prefabCharacter: {fileID: 1919012471076396, guid: 4e60231958933ba49a897e18d6eb71f5, type: 3}
