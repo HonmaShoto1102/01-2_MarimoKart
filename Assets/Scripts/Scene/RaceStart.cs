@@ -20,6 +20,9 @@ namespace SelectData
         //Enemy
         public GameObject enemy;
 
+ 
+
+
         private MyGameManagerData myGameManagerData;
 
         private void Start()
