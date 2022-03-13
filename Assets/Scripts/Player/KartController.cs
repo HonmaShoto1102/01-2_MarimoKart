@@ -39,7 +39,7 @@ public class KartController : MonoBehaviour
     public LayerMask layerMask;
 
     [Header("Model Parts")]
-
+    public Transform parentKartModel;//ここから子要素を辿る
     public Transform frontWheels;
     public Transform backWheels;
     public Transform steeringWheel;
@@ -56,15 +56,15 @@ public class KartController : MonoBehaviour
 
         for (int i = 0; i < wheelParticles.GetChild(0).childCount; i++)
         {
-            primaryParticles.Add(wheelParticles.GetChild(0).GetChild(i).GetComponent<ParticleSystem>());
+            primaryParticles.Add(wheelParticles.GetChild(0).GetChild(i).GetComponent<ParticleSystem>());//koko
         }
 
         for (int i = 0; i < wheelParticles.GetChild(1).childCount; i++)
         {
-            primaryParticles.Add(wheelParticles.GetChild(1).GetChild(i).GetComponent<ParticleSystem>());
+            primaryParticles.Add(wheelParticles.GetChild(1).GetChild(i).GetComponent<ParticleSystem>());//lolo
         }
 
-        foreach(ParticleSystem p in flashParticles.GetComponentsInChildren<ParticleSystem>())
+        foreach(ParticleSystem p in flashParticles.GetComponentsInChildren<ParticleSystem>())//kiki
         {
             secondaryParticles.Add(p);
         }
@@ -289,11 +289,9 @@ public class KartController : MonoBehaviour
     //    Gizmos.DrawLine(transform.position + transform.up, transform.position - (transform.up * 2));
     //}
 
-    private void OnTriggerEnter(Collider collider)
+   void GetTireChildren(GameObject obj)
     {
-        if (collider.CompareTag("Player") == true)
-        {
-            Debug.Log("player");
-        }
+
     }
+
 }

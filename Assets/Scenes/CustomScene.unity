@@ -147,8 +147,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358002128}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 3.47}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 3.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 897735643}
@@ -344,7 +344,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557502294}
-  m_LocalRotation: {x: 0.07591306, y: 0.000000012894143, z: -9.816665e-10, w: 0.9971145}
+  m_LocalRotation: {x: 0.07591304, y: -0.0000000019870614, z: 1.5128046e-10, w: 0.9971145}
   m_LocalPosition: {x: 0, y: 1, z: -4.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -532,6 +532,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 307
+  parentKartModel: {fileID: 887711876}
   frontWheels: {fileID: 0}
   backWheels: {fileID: 0}
   steeringWheel: {fileID: 0}
@@ -1227,7 +1228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1578880766
 Transform:
   m_ObjectHideFlags: 0
@@ -1235,7 +1236,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578880765}
-  m_LocalRotation: {x: 0.07591306, y: 0.000000012894143, z: -9.816665e-10, w: 0.9971145}
+  m_LocalRotation: {x: 0.07591304, y: -0.0000000019870614, z: 1.5128046e-10, w: 0.9971145}
   m_LocalPosition: {x: 0, y: 1, z: -4.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1447,7 +1448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: 159}
+  m_AnchoredPosition: {x: 0, y: 159}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1738342167
@@ -1746,8 +1747,8 @@ MonoBehaviour:
   parentKite: {fileID: 887711876}
   TiresList:
   - {fileID: 5456767640040677619, guid: eb7227087a878b5409bd644540d87e2a, type: 3}
-  - {fileID: 4956866942355197816, guid: 744292bbcb715024298659f0e86b5646, type: 3}
-  - {fileID: 2675507209768749294, guid: 5bfea9fbc1ecce54ab2484174123ad6b, type: 3}
+  - {fileID: 5456767640040677619, guid: adba0755de0da474a9bef4913c9cee71, type: 3}
+  - {fileID: 5456767640040677619, guid: aa575769b8fb3dc478bd9e5a2c6819db, type: 3}
   BodyiesList:
   - {fileID: 9011705201822216320, guid: ef39c71b8f9962b419c024bd0bdcb67e, type: 3}
   KitesList:
