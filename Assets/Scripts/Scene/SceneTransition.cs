@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace SelectData
+namespace SelectData.Manager.Scene
 {
     public class SceneTransition : MonoBehaviour
     {

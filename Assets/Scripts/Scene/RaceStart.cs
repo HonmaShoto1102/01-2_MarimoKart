@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SelectData
+namespace SelectData.Manager.Scene
 {
     public class RaceStart : MonoBehaviour
     {
@@ -33,7 +33,7 @@ namespace SelectData
                 playerCamera = player.transform.Find("PlayerCamera").gameObject;
                 playerCamera.SetActive(true);
                 kart = player.transform.Find("Kart").gameObject;
-                kart.GetComponent<KartController>().enabled = true;
+                kart.GetComponent<SelectData.Manager.Player.KartController>().enabled = true;
             }
 
             {//PlayerÇÃèoåªà íu

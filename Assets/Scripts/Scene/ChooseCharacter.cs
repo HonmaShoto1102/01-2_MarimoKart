@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace SelectData
+namespace SelectData.Manager.Scene
 {
     public class ChooseCharacter : MonoBehaviour
     {

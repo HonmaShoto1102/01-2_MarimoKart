@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SelectData
+namespace SelectData.Manager.Scene
 {
     public class GameStartButton : MonoBehaviour
     {

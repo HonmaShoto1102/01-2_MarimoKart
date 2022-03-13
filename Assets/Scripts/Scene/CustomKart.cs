@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SelectData
+namespace SelectData.Manager.Scene
 {
 	public class CustomKart : MonoBehaviour
 	{
@@ -58,19 +58,21 @@ namespace SelectData
 		//myGamemanagerからキャラクターを取得出来なかった場合(デバッグ用)
 		public GameObject prefabCharacter;
 
+
 		void Start()
 		{
 			myGameManagerData = FindObjectOfType<MyGameManager>().GetMyGameManagerData();
 
-			tireCount = 0;
-			bodyCount = 0;
+			tireCount = -1;
+			bodyCount = -1;
+			kiteCount = -1;
 
 			//　最初は何も選択しない
 			ChangeCharacter();
 			ChangeBody();
 			ChangeTire();
 			ChangeKite();
-
+			
 			kite.SetActive(false);
 		}
 
@@ -156,6 +158,12 @@ namespace SelectData
 				Destroy(body);
 			}
 
+			bodyCount++;
+			if (bodyCount >= BodyiesList.Count)
+			{
+				bodyCount = 0;
+			}
+
 			//　選択が設定されている時
 			if (bodyCount < BodyiesList.Count)
 			{
@@ -171,11 +179,8 @@ namespace SelectData
 				//　選択が設定されていない時はボディインスタンスを削除
 			}
 
-			bodyCount++;
-			if (bodyCount >= BodyiesList.Count)
-			{
-				bodyCount = 0;
-			}
+		
+			myGameManagerData.SetBodyNumber(bodyCount);
 		}
 
 		void ChangeTire()
@@ -184,6 +189,12 @@ namespace SelectData
 			if (tire != null)
 			{
 				Destroy(tire);
+			}
+
+			tireCount++;
+			if (tireCount >= TiresList.Count)
+			{
+				tireCount = 0;
 			}
 
 			//　選択が設定されている時
@@ -201,13 +212,8 @@ namespace SelectData
 				//　選択が設定されていない時はタイヤインスタンスを削除
 			}
 
-			tireCount++;
-			if (tireCount >= TiresList.Count)
-			{
-				tireCount = 0;
-			}
-
-
+			
+			myGameManagerData.SetTireNumber(tireCount);
 		}
 		void ChangeKite()
 		{
@@ -215,6 +221,12 @@ namespace SelectData
 			if (kite != null)
 			{
 				Destroy(kite);
+			}
+
+			kiteCount++;
+			if (kiteCount >= KitesList.Count)
+			{
+				kiteCount = 0;
 			}
 
 			//　選択が設定されている時
@@ -232,11 +244,8 @@ namespace SelectData
 				//　選択が設定されていない時はグライダーインスタンスを削除
 			}
 
-			kiteCount++;
-			if (kiteCount >= KitesList.Count)
-			{
-				kiteCount = 0;
-			}
+			
+			myGameManagerData.SetKiteNumber(kiteCount);
 		}
 
 

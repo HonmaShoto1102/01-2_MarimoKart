@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - KartModel
   - Tire
+  - Body
   layers:
   - Default
   - TransparentFX
