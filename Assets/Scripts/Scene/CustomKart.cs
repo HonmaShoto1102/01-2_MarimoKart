@@ -88,9 +88,7 @@ namespace SelectData.Manager.Scene
 			{
 				kite.SetActive(false);
 				ChangeTire();
-				//Debug.Log("tireカウント:" + tireCount);
-				//Debug.Log("tireゲームオブジェクト:" + tire);
-				//Debug.Log("tireリスト:" + TiresList);
+				
 			}
 			else if (Input.GetKeyDown("3"))
 			{
